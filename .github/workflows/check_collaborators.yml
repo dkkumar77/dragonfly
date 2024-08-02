@@ -39,12 +39,12 @@ jobs:
           repo = os.getenv('REPOSITORY')
           headers = {'Authorization': f'token {token}'}
 
-          # Check if the repository is private
+          # Check if the repository is public
           repo_info = requests.get(f'https://api.github.com/repos/{repo}', headers=headers).json()
-          if repo_info.get('private', False):
-              print(GREEN + "[✓] Repository is private." + RESET)
+          if repo_info.get('public', False):
+              print(GREEN + "[✓] Repository is public." + RESET)
           else:
-              print(RED + "[X] Repository is NOT private." + RESET)
+              print(RED + "[X] Repository is NOT public." + RESET)
               action_result = 1
 
           # Check each user
