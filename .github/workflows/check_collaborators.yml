@@ -41,7 +41,7 @@ jobs:
 
           # Check if the repository is public
           repo_info = requests.get(f'https://api.github.com/repos/{repo}', headers=headers).json()
-          if repo_info.get('public', False):
+          if repo_info.get('private', True):
               print(GREEN + "[✓] Repository is public." + RESET)
           else:
               print(RED + "[X] Repository is NOT public." + RESET)
